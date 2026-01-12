@@ -1,0 +1,42 @@
+name: learing_driver_app
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_svg: ^2.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/light_bulb_icon.svg
+    - assets/images/question_mark_icon.svg
+    - assets/images/traffic_sign_icon.svg
+    - assets/images/warning_sign_icon.svg
+
+    
+  fonts:
+    - family: BeVietnamPro
+      fonts:
+        - asset: assets/fonts/BeVietnamPro-Black.ttf
+        - asset: assets/fonts/BeVietnamPro-Bold.ttf
+        - asset: assets/fonts/BeVietnamPro-Italic.ttf
+        - asset: assets/fonts/BeVietnamPro-Light.ttf
+        - asset: assets/fonts/BeVietnamPro-Medium.ttf
+        - asset: assets/fonts/BeVietnamPro-Regular.ttf
+        - asset: assets/fonts/BeVietnamPro-Thin.ttf
+
+        
