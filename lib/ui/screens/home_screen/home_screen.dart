@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learing_driver_app/ui/screens/home_screen/widget/check_skill.dart';
 import 'package:learing_driver_app/ui/screens/home_screen/widget/circular_progress.dart';
 import 'package:learing_driver_app/ui/screens/home_screen/widget/grid_feature.dart';
+import 'package:learing_driver_app/ui/screens/practice_screen/practice_screen.dart';
 import 'package:learing_driver_app/ui/shared_widgets/custom_app_bar.dart';
 import 'package:learing_driver_app/ui/shared_widgets/custom_button.dart';
 
@@ -40,9 +41,12 @@ class HomeScreen extends StatelessWidget {
               children: [
                 CustomButton(
                   onPressed: () {
-                    ScaffoldMessenger.of(
+                    Navigator.push(
                       context,
-                    ).showSnackBar(const SnackBar(content: Text("Ôn tập")));
+                      MaterialPageRoute(
+                        builder: (context) => const PracticeScreen(),
+                      ),
+                    );
                   },
                   color: Colors.lightGreen,
                   height: 80,
