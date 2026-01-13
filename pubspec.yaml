@@ -13,6 +13,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.2.3
+  sqflite: ^2.3.0
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_test:
@@ -22,6 +24,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/database/driver_learning_v2.db
     - assets/images/light_bulb_icon.svg
     - assets/images/question_mark_icon.svg
     - assets/images/traffic_sign_icon.svg
