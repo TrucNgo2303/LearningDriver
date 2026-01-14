@@ -25,8 +25,8 @@ class PracticeProvider extends ChangeNotifier {
             SELECT 
                 'Câu điểm liệt' as classify, 
                 COUNT(*) as total_questions,
-                0 as sort_order, -- Trọng số ưu tiên 1
-                0 as min_id      -- ID ảo nhỏ nhất để giữ vị trí đầu
+                0 as sort_order, 
+                0 as min_id 
             FROM questions 
             WHERE is_critical = 1
 
@@ -35,8 +35,8 @@ class PracticeProvider extends ChangeNotifier {
             SELECT 
                 classify, 
                 COUNT(*) as total_questions,
-                1 as sort_order,        -- Trọng số ưu tiên 2
-                MIN(id) as min_id       -- Lấy ID nhỏ nhất của mỗi nhóm để sắp xếp
+                1 as sort_order,
+                MIN(id) as min_id
             FROM questions 
             GROUP BY classify
         ) AS result
