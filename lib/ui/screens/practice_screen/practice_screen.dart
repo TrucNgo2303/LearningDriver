@@ -73,6 +73,7 @@ class _PracticeScreenContentState extends State<_PracticeScreenContent> {
                 completedCount: item.completedCount, // Mặc định là 0
                 totalCount: item.totalQuestions,
                 onTap: () {
+                  debugPrint("Mở phân loại: ${item.classifyName}");
                   Navigator.push(
                     context,
                     MaterialPageRoute(

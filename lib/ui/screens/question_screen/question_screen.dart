@@ -46,6 +46,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
           : SingleChildScrollView(
               padding: const EdgeInsets.all(16),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Widget hiển thị nội dung câu hỏi và ảnh (nếu có)
                   QuestionWidget(
@@ -58,28 +59,30 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
                   // Danh sách các câu trả lời lấy từ list options trong model
                   ...List.generate(question.options.length, (index) {
-                    final answerIndex =
-                        index + 1; // Vì trong DB thường lưu answer 1, 2, 3...
+                    final answerIndex = index + 1;
+                    // 1. isSelected: Chỉ TRUE nếu index này đúng bằng index user vừa bấm
                     final isSelected =
                         provider.currentSelectedAnswer == answerIndex;
+
+                    // 2. isCorrect: Kiểm tra xem đáp án hiện tại có đúng với DB không
                     final isCorrect = answerIndex == question.correctAnswer;
-                    final hasAnswered = provider.currentSelectedAnswer != null;
 
                     return AnswerWidget(
                       id: answerIndex,
                       text: question.options[index],
-                      // Nếu đã trả lời, hiển thị màu Xanh cho câu đúng và Đỏ cho câu chọn sai
-                      isSelected: isSelected || (hasAnswered && isCorrect),
-                      isCorrect: isCorrect,
+                      isSelected: isSelected, // Chỉ highlight câu đang chọn
+                      isCorrect:
+                          isCorrect, // Màu sắc (Xanh/Đỏ) sẽ dựa trên việc câu ĐANG CHỌN có đúng hay không
                       onTap: () =>
                           provider.selectAnswer(question.id, answerIndex),
                     );
                   }),
 
-                  // Widget giải thích: Hiện ra sau khi người dùng đã chọn đáp án
-                  if (provider.currentSelectedAnswer != null)
+                  // 3. Logic hiển thị ExplanationWidget
+                  if (provider.currentSelectedAnswer != null &&
+                      provider.currentSelectedAnswer == question.correctAnswer)
                     ExplanationWidget(
-                      isChooseCorrect: true, // Hiển thị khung giải thích
+                      isChooseCorrect: true,
                       explanation: question.explanation,
                     ),
 

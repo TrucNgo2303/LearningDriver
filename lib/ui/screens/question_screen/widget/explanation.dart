@@ -26,7 +26,7 @@ class ExplanationWidget extends StatelessWidget {
         children: [
           const Text(
             "Giải thích:",
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
           const SizedBox(height: 8),
           Text(explanation),

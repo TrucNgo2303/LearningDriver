@@ -29,9 +29,21 @@ class QuestionProvider extends ChangeNotifier {
 
     try {
       final db = await DatabaseHelper().database;
+      String query;
+      List<dynamic>? whereArgs;
+
+      if (classify == 'Câu điểm liệt') {
+        // Nếu là câu điểm liệt, lọc theo cột is_critical
+        query = 'SELECT * FROM questions WHERE is_critical = 1';
+        whereArgs = null;
+      } else {
+        // Các trường hợp khác, lọc theo cột classify thông thường
+        query = 'SELECT * FROM questions WHERE classify = ?';
+        whereArgs = [classify];
+      }
       final List<Map<String, dynamic>> maps = await db.rawQuery(
-        'SELECT * FROM questions WHERE classify = ?',
-        [classify],
+        query,
+        whereArgs,
       );
       _questions = maps.map((item) => QuestionModel.fromMap(item)).toList();
     } catch (e) {
@@ -42,10 +54,8 @@ class QuestionProvider extends ChangeNotifier {
     }
   }
 
-  // Hàm chọn đáp án
   void selectAnswer(int questionId, int answerIndex) {
-    if (_selectedAnswers.containsKey(questionId))
-      return; // Không cho chọn lại nếu đã chọn
+    // Thay vì return nếu đã tồn tại, chúng ta cập nhật giá trị mới
     _selectedAnswers[questionId] = answerIndex;
     notifyListeners();
   }
