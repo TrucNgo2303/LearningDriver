@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learing_driver_app/ui/screens/question_screen/question_provider.dart';
 import 'package:learing_driver_app/ui/screens/question_screen/question_screen.dart';
 import 'package:provider/provider.dart';
 // Import các file theo cấu trúc của bạn
@@ -75,7 +76,10 @@ class _PracticeScreenContentState extends State<_PracticeScreenContent> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const QuestionScreen(),
+                      builder: (context) => ChangeNotifierProvider(
+                        create: (_) => QuestionProvider(),
+                        child: QuestionScreen(classify: item.classifyName),
+                      ),
                     ),
                   );
                 },
