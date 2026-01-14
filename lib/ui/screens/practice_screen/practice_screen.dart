@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learing_driver_app/ui/screens/question_screen/question_screen.dart';
 import 'package:provider/provider.dart';
 // Import các file theo cấu trúc của bạn
 import 'package:learing_driver_app/ui/screens/practice_screen/practice_provider.dart';
@@ -71,8 +72,12 @@ class _PracticeScreenContentState extends State<_PracticeScreenContent> {
                 completedCount: item.completedCount, // Mặc định là 0
                 totalCount: item.totalQuestions,
                 onTap: () {
-                  // Chuyển đến màn hình danh sách câu hỏi theo phân loại
-                  debugPrint("Mở phân loại: ${item.classifyName}");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const QuestionScreen(),
+                    ),
+                  );
                 },
               );
             },
