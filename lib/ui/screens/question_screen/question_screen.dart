@@ -27,7 +27,6 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // watch để UI tự động vẽ lại khi provider gọi notifyListeners()
     final provider = context.watch<QuestionProvider>();
     final question = provider.currentQuestion;
 

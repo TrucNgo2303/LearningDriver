@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learing_driver_app/ui/screens/question_screen/widget/question_grid.dart';
 
 class BottomNavQuestion extends StatelessWidget {
   final int currentQuestion;
@@ -28,7 +29,14 @@ class BottomNavQuestion extends StatelessWidget {
               icon: const Icon(Icons.arrow_back_ios),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                showQuestionGrid(
+                  context,
+                  totalQuestions: 180,
+                  correctQuestions: [1, 12, 35],
+                  wrongQuestions: [2, 100],
+                );
+              },
               borderRadius: BorderRadius.circular(8),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
